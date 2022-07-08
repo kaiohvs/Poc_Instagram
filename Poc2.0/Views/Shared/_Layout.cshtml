@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*<title>@ViewData["Title"] - WebApp.Admin.UI</title>*@
+    <title>Squad Lab</title>
+    <link href="~/Content/img/logo_redondo.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://use.typekit.net/pta5bhm.css">
+
+    <link href="~/Content/app-assets/fonts/icon-travelex/style.css" rel="stylesheet" />
+    <link href="~/Content/app-assets/vendors/css/vendors.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/themes/bordered-layout.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/themes/semi-dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/vendors/css/forms/select/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/vendors/css/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/vendors/css/extensions/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/app-assets/css/plugins/extensions/ext-component-sweet-alerts.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/css/style.css">
+
+    @await RenderSectionAsync("Styles", required: false)
+
+    <style>
+        .title-divider {
+            color: #676d7d;
+        }
+
+        body {
+            font-family: 'lato' !important, sans-serif;
+        }
+    </style>
+
+</head>
+<body class="vertical-layout vertical-menu-modern navbar-floating footer-static menu-expanded" data-menu="vertical-menu-modern">
+
+    @*BEGIN HEADER*@
+    <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-dark navbar-shadow">
+        <div class="navbar-container d-flex content">
+            <div class="bookmark-wrapper d-flex align-items-center">
+                <ul class="nav navbar-nav d-xl-none">
+                    <li><a class="nav-link menu-toggle is-active" href="#"><i class="icon-vuesax-linear-menu-hamburguer text-white"></i></a></li>
+                </ul>
+
+            </div>
+            <ul class="nav navbar-nav align-items-center ms-auto">
+                <li class="nav-item dropdown dropdown-user">
+                    <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder text-white">Usuário Adminstrativo</span><span class="user-status text-white">admin@admin.com</span></div>
+                        <span class="avatar "style="background-color:#b0317d1f;">
+                          
+                            <i class="icon-vuesax-linear-profile-circle font-large-2 text-primary bg-transparent" ></i>
+                        </span>
+                    </a>
+                    <div id="signOut" class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
+                        <a class="dropdown-item" >
+                            <div class="d-flex align-items-center"><i class='icon-vuesax-linear-logout'></i>&nbsp;Sair</div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    @*END HEADER*@
+
+    @*BEGIN SIDEMENU*@
+    <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+
+        <div class="navbar-header d-flex align-items-center mt-1">
+            <ul class="nav navbar-nav d-flex flex-row">
+                <li class="nav-item me-auto">
+                    <a class="" href="/">
+                        <span>
+                            <img class="w-75 h-100" src="~/Content/img/logo_squad.png" />
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-menu-content ps ps--active-y mt-2">
+            <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+                 <li class="nav-item">
+                    <a class="d-flex align-items-center" href="/Profile">
+                        <i class='icon-vuesax-linear-profile-2user'></i>
+                        <span class="menu-title text-truncate">Consulta Perfil</span>
+                    </a>
+                </li>         
+                <li class="nav-item">
+                    <a class="d-flex align-items-center" href="/Insight">
+                        <i class='icon-vuesax-linear-setting-2'></i>
+                        <span class="menu-title text-truncate">Consulta Insight</span>
+                    </a>
+                </li>                      
+            </ul>
+        </div>
+    </div>
+    @*BEGIN SIDEMENU*@
+
+
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-9 col-12 mb-2">
+                    <div class="row breadcrumbs-top">
+                        <div class="col-12">
+                            <h2 class="content-header-title float-start mb-0">@ViewData["titleBreadcrumb"]</h2>
+                            <div class="breadcrumb-wrapper">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item">
+                                        <a href="@ViewData["hrefCurrentView"]">@ViewData["titleCurrentView"]</a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content-body">
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer footer-static footer-light">
+        <p class="clearfix mb-0">
+            <span class="float-md-end d-block d-md-inline-block mt-25">Desenvolvido pela <a class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Koode Tecnologia</a></span>
+        </p>
+    </footer>
+
+    <script src="~/Content/app-assets/vendors/js/vendors.min.js"></script>
+    <script src="~/Content/app-assets/js/core/app-menu.js"></script>
+    <script src="~/Content/app-assets/js/core/app.js"></script>
+    <script src="~/Content/app-assets/js/scripts/customizer.js"></script>
+    <script src="~/Content/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="~/Content/app-assets/vendors/js/extensions/sweetalert2.all.min.js"></script>
+    <script src="~/Content/app-assets/vendors/js/extensions/polyfill.min.js"></script>
+    <script src="~/js/functions.js"></script>
+   
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

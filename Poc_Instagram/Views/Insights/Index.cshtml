@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Poc_Instagram.Models.Insight>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pesquisar Insight</h1>
+
+<div class="form-group">
+    <label for="exampleSelect1" class="form-label mt-4">Selecione o Insight: </label>
+    <select class="form-select" id="exampleSelect1">
+        <option>Reels</option>
+        <option>Feeds</option>
+        <option>Storys</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label class="form-label mt-4">Informe o link do Insiht</label>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <button class="btn btn-primary" type="button" id="button-addon2">Pesquisar</button>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdInsight">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdInsight">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdInsight">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
