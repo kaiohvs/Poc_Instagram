@@ -16,19 +16,54 @@
         </div>
         <div class="card-content collapse show" aria-expanded="true">
             <div class="card-body">
+                 <div class="row col-12">
+                    <div class="col-lg-6 col-md-12 mb-1">
+                        <div id="input-file" class="input-group cursor-pointer">
+                            <button class="btn btn-outline-primary waves-effect" id="button-addon2" type="button">@@</button>
+                            <input type="text" id="usuario_insight" class="form-control" placeholder="Preencher o @@ do seu Perfil" aria-describedby="button-addon2">
+                        </div>
+                    </div>
+                 </div>
                 <div class="row col-12">
                     <div class="col-lg-6 col-md-12 mb-1">
                         <div id="input-file" class="input-group cursor-pointer">
                             <button class="btn btn-outline-primary waves-effect" id="button-addon2" type="button">@@</button>
-                            <input type="text" id="id-name" class="form-control" placeholder="Preencher o @@ do seu Perfil" aria-describedby="button-addon2">
+                            <select name="insight" id="select_insight" class="form-select">
+                                <option label="Selecione sua opção" value="0"></option>
+                                <option value="1">Feed</option>
+                                <option value="2">Reel</option>
+                                <option value="3">Story</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 mb-1">
-                        <button class="create-new btn btn-primary" id="btn_Salvar" type="button">Consulta Insight</button>
+                        <button class="create-new btn btn-primary" id="btn_Salvar_Insight" type="button" onclick="insight()">Consulta Insight</button>
                     </div>
-
+                </div>
+            </div>          
+        </div>
+    </div>
+    <div class="row">
+       <div class="card">
+        <div class="card-header">
+            <h4 class="card-title"></h4>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li><a data-action="collapse"><i data-feather="chevron-down"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-content collapse show" aria-expanded="true">
+            <div class="card-body">
+                <div class="row col-12">
+                    <div class="col-lg-6 col-md-12 mb-1">
+                        <div id="list_insight" class="input-group cursor-pointer">
+                          
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
