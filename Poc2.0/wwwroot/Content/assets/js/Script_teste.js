@@ -4,8 +4,8 @@ function usuario() {
     var usuario_perfile = document.getElementById("usuario_perfile").value;
     console.log(usuario_perfile);
 
-    var token = "EAAIlM1oZCHHEBAG1Hf9ald0tKseI15F4yDr3AA8WcaHp5KJIzKK87u2BiSwjfP8kBZBAn6TbBbSugAQt3cQdZC4wCsGr1M9JuFFcVi4yXJH0aoc0dUN1ZB2VKi9VhsFvp0JX7yV0RRPqniSJuyM5TvIS9o11uBuN2ThTcZCfzJEGRLWZB5PBVZBofbQrEGyehSZCDnvywXFvLJQxuW9THzDj";
-    var urls = "https://graph.facebook.com/v14.0/17841453664235456?fields=business_discovery.username(" + usuario_perfile + "){followers_count,follows_count,username,id,media_count,media{id,media_url,media_type,permalink,like_count,comments_count,caption,username,timestamp}}&access_token=" + token;
+    var token = "EAAIlM1oZCHHEBAO4N4ZATieTuC3lCp1P7tVfQNZBSLDdVzz05uw4BmGwIyqNMsh1kqKJ1R4z0FGhZASZBzmAff1Bky9Mzzeaap4S8TuPGvBSfZAOH3NcZAWQplrZBIyu0976l7wX4vcZAk0r1SMhryk8Vele64wmxGv3E5mPFbnvXCb2DZCUGBsnvgEEPV72SNLWcYEb9l1GGizL7APzeTRbMH";
+    var urls = "https://graph.facebook.com/v14.0/17841453664235456?fields=business_discovery.username(" + usuario_perfile + "){followers_count,profile_picture_url,follows_count,username,id,media_count,media{id,media_url,media_type,permalink,like_count,comments_count,caption,username,timestamp}}&access_token=" + token;
 
     $.get(urls).then(function (response) {
         console.log('retorno: ', response.business_discovery.media.data);
@@ -15,11 +15,11 @@ function usuario() {
         console.log('feed: ', feed.id);
         
         let conteudo = "";
-        conteudo += "<table class='table'><thead><tr><th>#</th><th>Username</th><th>Followers Count</th><th>Follows_count</th><th>Media Count</th>";
+        conteudo += "<table class='table'><thead><tr><th>foto</th><th>Username</th><th>Followers Count</th><th>Follows_count</th><th>Media Count</th>";
         conteudo += "</tr></thead>";
         conteudo += "<tbody>";
         conteudo += "<tr>";
-        conteudo += "<td>" + feed.id + "</td>";
+        conteudo += "<td><img src=" + feed.profile_picture_url + " style='width:100px; height:100px;'></td>";
         conteudo += "<td>" + feed.username + "</td>";
         conteudo += "<td>" + feed.followers_count + "</td>";
         conteudo += "<td>" + feed.follows_count + "</td>";
@@ -37,7 +37,7 @@ function insight() {
     console.log(usuario_insight);
     console.log(usuario_select);
 
-    var token = "EAAIlM1oZCHHEBAG1Hf9ald0tKseI15F4yDr3AA8WcaHp5KJIzKK87u2BiSwjfP8kBZBAn6TbBbSugAQt3cQdZC4wCsGr1M9JuFFcVi4yXJH0aoc0dUN1ZB2VKi9VhsFvp0JX7yV0RRPqniSJuyM5TvIS9o11uBuN2ThTcZCfzJEGRLWZB5PBVZBofbQrEGyehSZCDnvywXFvLJQxuW9THzDj";
+    var token = "EAAIlM1oZCHHEBAO4N4ZATieTuC3lCp1P7tVfQNZBSLDdVzz05uw4BmGwIyqNMsh1kqKJ1R4z0FGhZASZBzmAff1Bky9Mzzeaap4S8TuPGvBSfZAOH3NcZAWQplrZBIyu0976l7wX4vcZAk0r1SMhryk8Vele64wmxGv3E5mPFbnvXCb2DZCUGBsnvgEEPV72SNLWcYEb9l1GGizL7APzeTRbMH";
     var urls = "https://graph.facebook.com/v14.0/17841453664235456?fields=business_discovery.username(" + usuario_insight + "){followers_count,follows_count,username,id,media_count,media{id,media_url,media_type,permalink,like_count,comments_count,caption,username,timestamp, media_product_type}}&access_token=" + token;
         
     if (usuario_select == 1) {
@@ -65,7 +65,7 @@ function insight() {
                 }
 
                 conteudo += '<td>' + feed.media_type + '</td>';
-                conteudo += '<td>' + titulo + '</td>';
+                conteudo += '<td maxlength="20">' + titulo + '</td>';
                 conteudo += '<td>' + feed.like_count + '</td>';
                 conteudo += '<td>' + feed.comments_count + '</td>';
                 conteudo += '<td>' + feed.permalink + '</td>';
