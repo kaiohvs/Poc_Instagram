@@ -4,7 +4,7 @@ function usuario() {
     var usuario_perfile = document.getElementById("usuario_perfile").value;
     console.log(usuario_perfile);
 
-    var token = "EAAIlM1oZCHHEBAIV1nBaHZBsyAPEi8p1hC5ZB3pL9GT0m7ZCNPf51imcOYZAXUwMFoAbaaZBpWwJz7ZBZCgwCsKoh3c0FUjhBCyhqRUymlHpsm2P2vmH1rmpYRTrXmc9frf1nlEoO4QyDcelw7zKytZCgskz6SyXunDPOGZCTKfSX4gYrQXZCZCZCtwO2AfwCTR39mb0DYgoB8CgXyg9HAeEo5lk08hdQUK6aXNWSxJYKlxkTvQZDZD";
+    var token = "EAAIlM1oZCHHEBAG1Hf9ald0tKseI15F4yDr3AA8WcaHp5KJIzKK87u2BiSwjfP8kBZBAn6TbBbSugAQt3cQdZC4wCsGr1M9JuFFcVi4yXJH0aoc0dUN1ZB2VKi9VhsFvp0JX7yV0RRPqniSJuyM5TvIS9o11uBuN2ThTcZCfzJEGRLWZB5PBVZBofbQrEGyehSZCDnvywXFvLJQxuW9THzDj";
     var urls = "https://graph.facebook.com/v14.0/17841453664235456?fields=business_discovery.username(" + usuario_perfile + "){followers_count,follows_count,username,id,media_count,media{id,media_url,media_type,permalink,like_count,comments_count,caption,username,timestamp}}&access_token=" + token;
 
     $.get(urls).then(function (response) {
@@ -37,14 +37,14 @@ function insight() {
     console.log(usuario_insight);
     console.log(usuario_select);
 
-    var token = "EAAIlM1oZCHHEBAIV1nBaHZBsyAPEi8p1hC5ZB3pL9GT0m7ZCNPf51imcOYZAXUwMFoAbaaZBpWwJz7ZBZCgwCsKoh3c0FUjhBCyhqRUymlHpsm2P2vmH1rmpYRTrXmc9frf1nlEoO4QyDcelw7zKytZCgskz6SyXunDPOGZCTKfSX4gYrQXZCZCZCtwO2AfwCTR39mb0DYgoB8CgXyg9HAeEo5lk08hdQUK6aXNWSxJYKlxkTvQZDZD";
+    var token = "EAAIlM1oZCHHEBAG1Hf9ald0tKseI15F4yDr3AA8WcaHp5KJIzKK87u2BiSwjfP8kBZBAn6TbBbSugAQt3cQdZC4wCsGr1M9JuFFcVi4yXJH0aoc0dUN1ZB2VKi9VhsFvp0JX7yV0RRPqniSJuyM5TvIS9o11uBuN2ThTcZCfzJEGRLWZB5PBVZBofbQrEGyehSZCDnvywXFvLJQxuW9THzDj";
     var urls = "https://graph.facebook.com/v14.0/17841453664235456?fields=business_discovery.username(" + usuario_insight + "){followers_count,follows_count,username,id,media_count,media{id,media_url,media_type,permalink,like_count,comments_count,caption,username,timestamp, media_product_type}}&access_token=" + token;
         
     if (usuario_select == 1) {
         $.get(urls).then(function (response) {
             let dadosJson = response.business_discovery.media.data;                                   
             let conteudo = "";
-            conteudo += "<table class='table'><thead><tr><th>#</th><th>Caption</th><th>Like Count</th><th>Comments Count</th><th>Permalink</th>";
+            conteudo += "<table class='table'><thead><tr><th>#</th><th>Media Type</th><th>Caption</th><th>Like Count</th><th>Comments Count</th><th>Permalink</th>";
             conteudo += "</tr></thead>";
             conteudo += "<tbody>";
 
@@ -53,6 +53,17 @@ function insight() {
                 let titulo = feed.caption !== null ? feed.caption : '';
 
                 conteudo += "<tr>";
+
+                if (feed.media_type == "IMAGE") {
+                    conteudo += "<td><img src=" + feed.media_url + " style='width:100px; height:100px;'></td>";
+                }
+                else if (feed.media_type == "VIDEO") {
+                    conteudo += "<td><video style='width:100px; height:100px;'controls><source src=" + feed.media_url + "type='video/mp4'></video></td>";
+                }
+                else {
+                    conteudo += "<td><img src=" + feed.media_url + " style='width:100px; height:100px;'></td>";
+                }
+
                 conteudo += '<td>' + feed.media_type + '</td>';
                 conteudo += '<td>' + titulo + '</td>';
                 conteudo += '<td>' + feed.like_count + '</td>';
